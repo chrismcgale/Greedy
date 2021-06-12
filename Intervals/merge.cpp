@@ -1,15 +1,12 @@
-struct Interval
-{
-    int s, f;
-};
+#include "merge.h"
 
 void merge(Interval *&A, int l, int r, int m, int mode)
 {
     int n1 = m - l + 1;
     int n2 = r - m;
 
-    Interval a1[n1];
-    Interval a2[n2];
+    Interval* a1 = new Interval[n1];
+    Interval* a2 = new Interval[n2];
 
     //2 temp arrays
     for (int i = 0; i < n1; ++i)
@@ -50,6 +47,8 @@ void merge(Interval *&A, int l, int r, int m, int mode)
             }
             n++;
         }
+        delete [] a1;
+        delete [] a2;
     }
 
     //incase left over in either array
